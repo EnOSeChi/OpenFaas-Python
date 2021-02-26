@@ -1,0 +1,24 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8090
+  network: func_functions
+functions:
+  thumbnail-generation:
+    lang: python3-debian
+    handler: ./thumbnail-generation
+    image: localhost:5000/thumbnail-generation:latest
+    environment:
+      minio_hostname: "minio:9000"
+      minio_bucket: "test"
+      minio_prv_bucket: "test-preview"
+      minio_access_key: "miniouser"
+      minio_secret_key: "miniopass"
+      database_host: "test_db"
+      database_user: "postgres"
+      database_password: "postgres"
+      database: "testdb"
+      write_debug: true
+      combine_output: false
+      read_timeout: 5m
+      write_timeout: 5m

@@ -1,0 +1,6 @@
+minio
+requests
+numpy
+psycopg2
+astropy
+scikit-image
